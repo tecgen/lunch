@@ -141,7 +141,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-        
+    
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         print("Webview fail with error \(error)");
     }
@@ -151,11 +151,9 @@ class ViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidStartLoad(webView: UIWebView) {
-
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
-
     }
 
 }
