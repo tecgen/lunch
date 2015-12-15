@@ -22,9 +22,9 @@ class ViewController: UIViewController, UIWebViewDelegate {
     @IBAction func segmentControl(sender: UISegmentedControl, forEvent event: UIEvent) {
         
         switch sender.selectedSegmentIndex {
-        case 0:
+        case 0: // today
             viewMenueOfToday = true
-        case 1:
+        case 1: // week
             viewMenueOfToday = false
         default:
             viewMenueOfToday = true
@@ -80,7 +80,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
     }
     
     func enrichWithEmoji(var s : String) -> String {
-        let toEnrich = ["Pommes" : "🍟", "Burger" : "🍔", "Pizza" : "🍕", "Hotdog" : "🌭", "HotDog" : "🌭", "Hot Dog" : "🌭", "Eier" : "🍳", "Pasta" : "🍜", "Spaghetti" : "🍝", "Taco" : "🌮", "Burrito" : "🌯"]
+        let toEnrich = ["Pommes" : "🍟", "Burger" : "🍔", "Pizza" : "🍕", "Hotdog" : "🌭", "HotDog" : "🌭", "Hot Dog" : "🌭", "Eier" : "🍳", "Pasta" : "🍜", "Spaghetti" : "🍝", "Taco" : "🌮", "Burrito" : "🌯", "Sandwich" : "🍞"]
         
         for key in toEnrich.keys {
             // http://stackoverflow.com/questions/14331001/emoji-shrink-on-mobile-safari-and-uiwebview
@@ -164,7 +164,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
         }
         
         html.appendContentsOf("</body></html>")
-        print(html)
+        //print(html)
         return html
     }
     
