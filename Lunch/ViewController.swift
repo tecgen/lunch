@@ -13,7 +13,12 @@ class ViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var display: UILabel!
     @IBOutlet var webview: UIWebView!
     
-    var viewMenueOfToday = true;
+    var locations = [String : [String : [[String:String]]]]()
+    var locationURLs = [String : String]()
+    var currency = "";
+    var locationSelection = "";
+    
+    var viewMenueOfToday = true
     
     // locations with links to the local menues
     var rootURL = "https://www.dropbox.com/s/xze0tpqpc264m5i/locations.json?dl=1"
@@ -29,19 +34,122 @@ class ViewController: UIViewController, UIWebViewDelegate {
         default:
             viewMenueOfToday = true
         }
-        refresh();
+        showContent()
     }
     
     @IBAction func refresh() {
-        loadContent()
+        
+        loadData()
+        showContent()
     }
     
+    // TODO v2
+    func loadData() {
+        
+        // only reload when no local data is available
+        if(locationURLs.keys.isEmpty) {
+            do {
+                let jsonLocation = try NSJSONSerialization.JSONObjectWithData(self.getJSON(rootURL), options: .AllowFragments)
+            
+                for anItem in jsonLocation as! [Dictionary<String, AnyObject>] {
+                    let location = anItem["name"] as! String
+                    let mealURL = anItem["url"] as! String
+                
+                    // add to locale data structure
+                    locationURLs[location] = mealURL
+                    currency = anItem["currency"] as! String
+                }
+            
+            } catch let error as NSError {
+                print("Failed to load: \(error.localizedDescription)")
+            }
+        }
+            
+        if locationSelection.isEmpty {
+            // use the first location when not selected
+            self.locationSelection = Array(locationURLs.keys)[0]
+        }
+       
+        // initialise keys in map for all known locations, but ...
+        for location in locationURLs.keys {
+            locations[location] = nil
+        }
+        
+        // define data structure: day / list of foods
+        var menueOfDay = [String : [[String:String]]]()
+        
+        do {
+            // get only data for the currently selected location
+            let jsonMeal = try NSJSONSerialization.JSONObjectWithData(self.getJSON(locationURLs[locationSelection]!), options: .AllowFragments)
+        
+            for localMeal in jsonMeal as! [Dictionary<String, AnyObject>] {
+                let meal = localMeal["foods"] as! String
+                var mealDate = localMeal["date"] as! String
+                let mealPrice = localMeal["price"] as! Double
+            
+                // drop everything but the date e.g. 2015-12-01
+                let index : String.Index = mealDate.startIndex.advancedBy(10)
+                mealDate = mealDate.substringToIndex(index)
+                
+                // if the menue of the current day is not filled
+                if(menueOfDay[mealDate] == nil) {
+                    menueOfDay[mealDate] = [[String:String]]()
+                }
+            
+                var food = [String : String]()
+                food[meal] = "\(mealPrice)0" //FIXME: 0.99 values
+                
+                // get list of foods and append current one
+                menueOfDay[mealDate]?.append(food)
+            }
+            locations[locationSelection] = menueOfDay
+        } catch let error as NSError {
+            print("Failed to load: \(error.localizedDescription)")
+        }
+        
+    }
+    
+    // TODO v2
+    func generateHtml() -> String {
+        var html = "<html><head><style>html {font-size: 200%; color: #134094; } body {font-family: Verdana, 'Lucida Sans Unicode', sans-serif;} h1,h2,h3,h4,div { text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4); } p {color:blue;} .date { font-weight:bold; margin-top: 1em; margin-bottom: 1em; } </style></head><body><h1>Kantine</h1>"
+        
+        // using the data structure
+        for (location, menue) in locations {
+            html += "<h2>" + location + "</h2>"
+            
+            for (date, foods) in menue {
+                if(!viewMenueOfToday) {
+                    html += "<div class=\"date\">" + date + "</div>"
+                }
+                html += "<ul>"
+                
+                for food in foods {
+                    for (var name, price) in food {
+                        
+                        name = self.cleanUpTheString(name)
+                        name = self.enrichWithEmoji(name)
+                        
+                        if(viewMenueOfToday) {
+                            if (date == self.today()) {
+                                html += "<li>\(name), \(price) " +  currency + "</li>"
+                            }
+                        } else {
+                            html += "<li>\(name), \(price) " +  currency + "</li>"
+                        }
+                    }
+                }
+                html += "</ul>"
+            }
+        }
+        html += "</body></html>"
+        return html;
+    }
     
    
-    func loadContent() {
+    func showContent() {
         webview.scalesPageToFit = true
         
-        let html = self.generateHTML();
+        let html = self.generateHtml();
         webview.loadHTMLString(html, baseURL: nil);
         
         // remote page need to use https in iOS 9
@@ -99,78 +207,9 @@ class ViewController: UIViewController, UIWebViewDelegate {
 
     }
 
-    func generateHTML() -> String {
-        var html = "<html><head><style>html {font-size: 200%; color: #134094; } body {font-family: Verdana, 'Lucida Sans Unicode', sans-serif;} h1,h2,h3,h4 { text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4); } p {color:blue;} .date { font-weight:bold; margin-top: 1em; margin-bottom: 1em; } </style></head><body><h1>Kantine</h1>"
-        
-        do {
-            let jsonLocation = try NSJSONSerialization.JSONObjectWithData(self.getJSON(rootURL), options: .AllowFragments)
-            
-            for anItem in jsonLocation as! [Dictionary<String, AnyObject>] {
-                let location = anItem["name"] as! String
-                let mealURL = anItem["url"] as! String
-                let currency = anItem["currency"] as! String
-                
-                html += "<h2>" + location + "</h2>"
-                
-                let jsonMeal = try NSJSONSerialization.JSONObjectWithData(self.getJSON(mealURL), options: .AllowFragments)
-                
-                var day = "";
-                var listStarted = false
-                
-                for localMeal in jsonMeal as! [Dictionary<String, AnyObject>] {
-                    var meal = localMeal["foods"] as! String
-                    var mealDate = localMeal["date"] as! String
-                    let mealPrice = localMeal["price"] as! Double
-                    
-                    // drop everything but the date e.g. 2015-12-01
-                    let index : String.Index = mealDate.startIndex.advancedBy(10)
-                    mealDate = mealDate.substringToIndex(index)
-                    
-                    
-                    // just show the date once per meal
-                    if (day != mealDate) {
-                        day = mealDate;
-                        
-                        // only in week view
-                        if(!viewMenueOfToday) {
-                            html += "<div class=\"date\">" + day + "</div>"
-                        }
-                    }
-                    
-                    if (!listStarted) {
-                        html += "<ul>"
-                        listStarted = true;
-                    }
-                    
-                    meal = self.cleanUpTheString(meal)
-                    meal = self.enrichWithEmoji(meal)
-                    
-                    if(viewMenueOfToday) {
-                        if (mealDate == self.today()) {
-                            html += "<li>" + meal + ", \(mealPrice)0 " +  currency + " </li>"
-                        } else {
-                            // don't show the meal of another day than today
-                        }
-                    } else {
-                        html += "<li>" + meal + ", \(mealPrice)0 " +  currency + " </li>"
-                    }
-                    
-                }
-                html += "</ul>"
-            }
-            
-        } catch let error as NSError {
-            print("Failed to load: \(error.localizedDescription)")
-        }
-        
-        html.appendContentsOf("</body></html>")
-        //print(html)
-        return html
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadContent()
+        refresh()
     }
 
     override func didReceiveMemoryWarning() {
