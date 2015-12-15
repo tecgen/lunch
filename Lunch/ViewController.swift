@@ -13,9 +13,6 @@ class ViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet weak var display: UILabel!
     @IBOutlet var webview: UIWebView!
     
-    
-    
-    
     var viewMenueOfToday = true;
     
     // locations with links to the local menues
@@ -133,8 +130,6 @@ class ViewController: UIViewController, UIWebViewDelegate {
                 html += "</ul>"
             }
             
-            
-            
         } catch let error as NSError {
             print("Failed to load: \(error.localizedDescription)")
         }
@@ -164,11 +159,11 @@ class ViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidStartLoad(webView: UIWebView) {
-        //print("Webview started Loading")
+
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
-        //print("Webview did finish load")
+
     }
 
 }
