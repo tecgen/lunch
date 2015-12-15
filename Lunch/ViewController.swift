@@ -72,13 +72,33 @@ class ViewController: UIViewController, UIWebViewDelegate {
      * clean up the string by dropping misleading characters
      */
     func cleanUpTheString(var s: String) -> String {
-        let toDrop = ["(A)", "(B)", "(Z)"]
+        let toDrop = ["(A)", "(B)", "(Z)", "\t"]
         for str in toDrop {
             s = s.stringByReplacingOccurrencesOfString(str, withString: "")
         }
         return s
     }
     
+    func enrichWithEmoji(var s : String) -> String {
+        let toEnrich = ["Pommes" : "🍟", "Burger" : "🍔", "Pizza" : "🍕", "Hotdog" : "🌭", "HotDog" : "🌭", "Hot Dog" : "🌭", "Eier" : "🍳", "Pasta" : "🍜", "Spaghetti" : "🍝", "Taco" : "🌮", "Burrito" : "🌯"]
+        
+        for key in toEnrich.keys {
+            // http://stackoverflow.com/questions/14331001/emoji-shrink-on-mobile-safari-and-uiwebview
+            // not working in Simulator
+            //let emoji = "<span style=\"font-size: 120.0px; font-family: \"AppleColorEmoji\";\">" + toEnrich[key]! + "</span>"
+            
+            // http://stackoverflow.com/questions/19702013/emojis-wont-scale-beyond-16px-font-size-on-ios-7
+            let emoji = "<span style=\"-webkit-transform: scale(2); position: absolute;\">" + toEnrich[key]! + "</span>"
+            
+            
+            //let emoji = toEnrich[key]!
+            s = s.stringByReplacingOccurrencesOfString(key, withString: key + "&nbsp;" + emoji + "&nbsp;&nbsp;&nbsp;")
+        }
+        
+        return s
+
+    }
+
     func generateHTML() -> String {
         var html = "<html><head><style>html {font-size: 200%; color: #134094; } body {font-family: Verdana, 'Lucida Sans Unicode', sans-serif;} h1,h2,h3,h4 { text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4); } p {color:blue;} .date { font-weight:bold; margin-top: 1em; margin-bottom: 1em; } </style></head><body><h1>Kantine</h1>"
         
@@ -98,7 +118,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
                 var listStarted = false
                 
                 for localMeal in jsonMeal as! [Dictionary<String, AnyObject>] {
-                    let meal = localMeal["foods"] as! String
+                    var meal = localMeal["foods"] as! String
                     var mealDate = localMeal["date"] as! String
                     let mealPrice = localMeal["price"] as! Double
                     
@@ -122,9 +142,12 @@ class ViewController: UIViewController, UIWebViewDelegate {
                         listStarted = true;
                     }
                     
+                    meal = self.cleanUpTheString(meal)
+                    meal = self.enrichWithEmoji(meal)
+                    
                     if(viewMenueOfToday) {
                         if (mealDate == self.today()) {
-                            html += "<li>" + cleanUpTheString(meal) + ", \(mealPrice)0 " +  currency + " </li>"
+                            html += "<li>" + meal + ", \(mealPrice)0 " +  currency + " </li>"
                         } else {
                             // don't show the meal of another day than today
                         }
@@ -141,6 +164,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
         }
         
         html.appendContentsOf("</body></html>")
+        print(html)
         return html
     }
     
