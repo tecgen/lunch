@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Lunch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXG-M0-fsU">
+                                <rect key="frame" x="20" y="20" width="49" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1I7-eE-mcR">
+                                <rect key="frame" x="20" y="28" width="560" height="506"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TP9-OL-xC4">
+                                <rect key="frame" x="20" y="557" width="113" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="PWP-m1-V1B"/>
+                                    <constraint firstAttribute="width" constant="113" id="kLd-DB-yay"/>
+                                    <constraint firstAttribute="width" secondItem="TP9-OL-xC4" secondAttribute="height" multiplier="113:28" id="raz-L3-Bsd"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Heute"/>
+                                    <segment title="Woche"/>
+                                </segments>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PWP-m1-V1B"/>
+                                        <exclude reference="kLd-DB-yay"/>
+                                        <exclude reference="raz-L3-Bsd"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="segmentControl:forEvent:" destination="BYZ-38-t0r" eventType="valueChanged" id="7fA-Jy-fbE"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNg-NH-wYX">
+                                <rect key="frame" x="548" y="549" width="32" height="51"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="🍽"/>
+                                <connections>
+                                    <action selector="refresh" destination="BYZ-38-t0r" eventType="touchUpInside" id="858-bB-G6b"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="BXG-M0-fsU" secondAttribute="leading" id="2V7-ci-Urt"/>
+                            <constraint firstAttribute="bottom" secondItem="lNg-NH-wYX" secondAttribute="bottom" id="2ZM-9P-rnU"/>
+                            <constraint firstItem="lNg-NH-wYX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="530" id="83Z-uN-uFK"/>
+                            <constraint firstItem="TP9-OL-xC4" firstAttribute="leading" secondItem="1I7-eE-mcR" secondAttribute="leading" id="8NM-ak-OdW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1I7-eE-mcR" secondAttribute="trailing" id="ITn-7b-nZs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lNg-NH-wYX" secondAttribute="trailing" constant="5" id="Muw-bh-SI5"/>
+                            <constraint firstItem="1I7-eE-mcR" firstAttribute="leading" secondItem="BXG-M0-fsU" secondAttribute="trailing" constant="-49" id="OAY-fH-f40"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="1I7-eE-mcR" secondAttribute="leading" id="fa8-jq-GEM"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1I7-eE-mcR" secondAttribute="bottom" constant="66" id="p21-vR-3xL"/>
+                            <constraint firstItem="lNg-NH-wYX" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="qaw-06-99r"/>
+                            <constraint firstItem="BXG-M0-fsU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uFz-0d-Kym"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TP9-OL-xC4" secondAttribute="bottom" constant="15" id="wdg-5t-JVd"/>
+                            <constraint firstItem="1I7-eE-mcR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="zZd-S0-MoP"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="83Z-uN-uFK"/>
+                                <exclude reference="Muw-bh-SI5"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="Display" destination="BXG-M0-fsU" id="jIg-WT-23L"/>
+                        <outlet property="webview" destination="1I7-eE-mcR" id="zdC-9Z-DAF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="311"/>
+        </scene>
+    </scenes>
+</document>
