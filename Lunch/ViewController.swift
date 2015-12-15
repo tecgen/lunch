@@ -68,6 +68,17 @@ class ViewController: UIViewController, UIWebViewDelegate {
         return formatter.stringFromDate(now)
     }
     
+    /**
+     * clean up the string by dropping misleading characters
+     */
+    func cleanUpTheString(var s: String) -> String {
+        let toDrop = ["(A)", "(B)", "(Z)"]
+        for str in toDrop {
+            s = s.stringByReplacingOccurrencesOfString(str, withString: "")
+        }
+        return s
+    }
+    
     func generateHTML() -> String {
         var html = "<html><head><style>html {font-size: 200%; color: #134094; } body {font-family: Verdana, 'Lucida Sans Unicode', sans-serif;} h1,h2,h3,h4 { text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4); } p {color:blue;} .date { font-weight:bold; margin-top: 1em; margin-bottom: 1em; } </style></head><body><h1>Kantine</h1>"
         
@@ -113,7 +124,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
                     
                     if(viewMenueOfToday) {
                         if (mealDate == self.today()) {
-                            html += "<li>" + meal + ", \(mealPrice)0 " +  currency + " </li>"
+                            html += "<li>" + cleanUpTheString(meal) + ", \(mealPrice)0 " +  currency + " </li>"
                         } else {
                             // don't show the meal of another day than today
                         }
