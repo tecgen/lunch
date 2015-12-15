@@ -34,7 +34,6 @@ class ViewController: UIViewController, UIWebViewDelegate {
     
     @IBAction func refresh() {
         loadContent()
-        
     }
     
     
@@ -45,15 +44,11 @@ class ViewController: UIViewController, UIWebViewDelegate {
         let html = self.generateHTML();
         webview.loadHTMLString(html, baseURL: nil);
         
-        // just plain HTML content
-        //webview.loadHTMLString("<h2>Welcome to Lunch!</h2>", baseURL: nil)
-        
         // remote page need to use https in iOS 9
         // workaround:
         // https://forums.developer.apple.com/thread/3544
         // doc:
         // https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/index.html
-        
         
         // webview.loadRequest(NSURLRequest(URL: NSURL(string: website)!))
         webview.delegate = self
@@ -145,11 +140,8 @@ class ViewController: UIViewController, UIWebViewDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    /* UIWebViewDelegate: */
-    
+        
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         print("Webview fail with error \(error)");
     }
