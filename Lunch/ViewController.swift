@@ -127,6 +127,8 @@ class ViewController: UIViewController, UIWebViewDelegate {
             
             // following is not ordered by date! why?
             // for (date, foods) in menue
+            // „Items in a Dictionary may not necessarily be iterated in the same order as they were inserted. The contents of a Dictionary are inherently unordered, and iterating over them does not guarantee the order in which they will be retrieved.“ (Apple Inc. „The Swift Programming Language.“)
+            
             for date in datesOrdered {
                 let foods = menue[date]
                 
