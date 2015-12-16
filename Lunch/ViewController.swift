@@ -118,16 +118,24 @@ class ViewController: UIViewController, UIWebViewDelegate {
         for (location, menue) in locations {
             html += "<h2>" + location + "</h2>"
             
-            for (date, foods) in menue {
-                //BUG: its not ordered by date!
-                
+            // order dates
+            var datesOrdered = [String]()
+            for date in menue.keys {
+                datesOrdered.append(date)
+            }
+            datesOrdered.sortInPlace({ (value1: String, value2: String) -> Bool in return value1 < value2 })
+            
+            // following is not ordered by date! why?
+            // for (date, foods) in menue
+            for date in datesOrdered {
+                let foods = menue[date]
                 
                 if(!viewMenueOfToday) {
                     html += "<div class=\"date\">" + date + "</div>"
                 }
                 html += "<ul>"
                 
-                for food in foods {
+                for food in foods! {
                     for (var name, price) in food {
                         
                         name = self.cleanUpTheString(name)
@@ -140,14 +148,14 @@ class ViewController: UIViewController, UIWebViewDelegate {
                         } else {
                             html += "<li>\(name), \(price) " +  currency + "</li>"
                         }
-                    }
-                }
+                    }//for-food
+                }//for-foods
                 html += "</ul>"
-            }
-        }
+            }//for-date
+        }//for-location
         html += "</body></html>"
         return html;
-    }
+    }//end-method
     
    
     func showContent() {
