@@ -69,14 +69,20 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="HRY-BM-JWm">
+                                <rect key="frame" x="0.0" y="554" width="600" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="BXG-M0-fsU" secondAttribute="leading" id="2V7-ci-Urt"/>
+                            <constraint firstItem="HRY-BM-JWm" firstAttribute="bottom" secondItem="J5y-KS-Suj" secondAttribute="top" id="9RW-LY-fcW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1I7-eE-mcR" secondAttribute="trailing" id="ITn-7b-nZs"/>
+                            <constraint firstItem="HRY-BM-JWm" firstAttribute="trailing" secondItem="J5y-KS-Suj" secondAttribute="trailing" id="Kxl-rZ-Mtq"/>
                             <constraint firstItem="1I7-eE-mcR" firstAttribute="leading" secondItem="BXG-M0-fsU" secondAttribute="trailing" constant="-49" id="OAY-fH-f40"/>
                             <constraint firstItem="J5y-KS-Suj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ejE-G7-u5B"/>
                             <constraint firstAttribute="leadingMargin" secondItem="1I7-eE-mcR" secondAttribute="leading" id="fa8-jq-GEM"/>
+                            <constraint firstItem="HRY-BM-JWm" firstAttribute="leading" secondItem="J5y-KS-Suj" secondAttribute="leading" id="jaV-3J-vB2"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1I7-eE-mcR" secondAttribute="bottom" constant="8" id="p21-vR-3xL"/>
                             <constraint firstItem="BXG-M0-fsU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uFz-0d-Kym"/>
                             <constraint firstItem="J5y-KS-Suj" firstAttribute="centerX" secondItem="1I7-eE-mcR" secondAttribute="centerX" id="vbR-Q3-O9Q"/>
@@ -86,6 +92,7 @@
                     </view>
                     <connections>
                         <outlet property="Display" destination="BXG-M0-fsU" id="jIg-WT-23L"/>
+                        <outlet property="progressView" destination="HRY-BM-JWm" id="sR1-rI-b7F"/>
                         <outlet property="webview" destination="1I7-eE-mcR" id="zdC-9Z-DAF"/>
                     </connections>
                 </viewController>

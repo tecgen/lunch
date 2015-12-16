@@ -12,6 +12,9 @@ class ViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var display: UILabel!
     @IBOutlet var webview: UIWebView!
+
+    @IBOutlet var progressView: UIProgressView!
+    
     
     var locations = [String : [String : [[String:String]]]]()
     var locationURLs = [String : String]()
@@ -37,10 +40,33 @@ class ViewController: UIViewController, UIWebViewDelegate {
         showContent()
     }
     
+    var counter:Int = 0 {
+        didSet {
+            let fractionalProgress = Float(counter) / 100.0
+            let animated = counter != 0
+            
+            progressView.setProgress(fractionalProgress, animated: animated)
+        }
+    }
+    
+    func startCount() {
+        self.counter = 0
+        for _ in 0..<100 {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+                sleep(1)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.counter++
+                    return
+                })
+            })
+        }
+    }
+    
     @IBAction func refresh() {
-        
+        startCount()
         loadData()
         showContent()
+        counter = 0
     }
     
     func loadData() {
@@ -223,6 +249,9 @@ class ViewController: UIViewController, UIWebViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressView.setProgress(0, animated: true)
+        
+        //showContent()
         refresh()
     }
 
