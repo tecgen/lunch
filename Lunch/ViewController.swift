@@ -43,7 +43,6 @@ class ViewController: UIViewController, UIWebViewDelegate {
         showContent()
     }
     
-    // TODO v2
     func loadData() {
         
         // only reload when no local data is available
@@ -91,7 +90,9 @@ class ViewController: UIViewController, UIWebViewDelegate {
                 let index : String.Index = mealDate.startIndex.advancedBy(10)
                 mealDate = mealDate.substringToIndex(index)
                 
+                
                 // if the menue of the current day is not filled
+                
                 if(menueOfDay[mealDate] == nil) {
                     menueOfDay[mealDate] = [[String:String]]()
                 }
@@ -102,6 +103,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
                 // get list of foods and append current one
                 menueOfDay[mealDate]?.append(food)
             }
+
             locations[locationSelection] = menueOfDay
         } catch let error as NSError {
             print("Failed to load: \(error.localizedDescription)")
@@ -109,7 +111,6 @@ class ViewController: UIViewController, UIWebViewDelegate {
         
     }
     
-    // TODO v2
     func generateHtml() -> String {
         var html = "<html><head><style>html {font-size: 200%; color: #134094; } body {font-family: Verdana, 'Lucida Sans Unicode', sans-serif;} h1,h2,h3,h4,div { text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.4); } p {color:blue;} .date { font-weight:bold; margin-top: 1em; margin-bottom: 1em; } </style></head><body><h1>Kantine</h1>"
         
@@ -118,6 +119,9 @@ class ViewController: UIViewController, UIWebViewDelegate {
             html += "<h2>" + location + "</h2>"
             
             for (date, foods) in menue {
+                //BUG: its not ordered by date!
+                
+                
                 if(!viewMenueOfToday) {
                     html += "<div class=\"date\">" + date + "</div>"
                 }
