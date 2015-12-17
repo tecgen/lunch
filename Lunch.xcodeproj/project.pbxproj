@@ -44,6 +44,10 @@
 		CE3396441C1B1EC9001C8991 /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3396211C1B1EC9001C8991 /* upload.png */; };
 		CE3396451C1B2015001C8991 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEE271131BB03439000F5BD2 /* Assets.xcassets */; };
 		CE824EF01C21BB3800812BFB /* Icon-167px.png in Resources */ = {isa = PBXBuildFile; fileRef = CE824EEF1C21BB3800812BFB /* Icon-167px.png */; };
+		CE824EF81C22B72700812BFB /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE824EF71C22B72700812BFB /* NotificationCenter.framework */; };
+		CE824EFB1C22B72700812BFB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE824EFA1C22B72700812BFB /* TodayViewController.swift */; };
+		CE824EFE1C22B72700812BFB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE824EFC1C22B72700812BFB /* MainInterface.storyboard */; };
+		CE824F021C22B72700812BFB /* Meals.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE824EF51C22B72700812BFB /* Meals.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEE2710D1BB03439000F5BD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2710C1BB03439000F5BD2 /* AppDelegate.swift */; };
 		CEE2710F1BB03439000F5BD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE2710E1BB03439000F5BD2 /* ViewController.swift */; };
 		CEE271121BB03439000F5BD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEE271101BB03439000F5BD2 /* Main.storyboard */; };
@@ -53,6 +57,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CE824F001C22B72700812BFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CEE271011BB03439000F5BD2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE824EF41C22B72700812BFB;
+			remoteInfo = Meals;
+		};
 		CEE2711E1BB03439000F5BD2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CEE271011BB03439000F5BD2 /* Project object */;
@@ -68,6 +79,20 @@
 			remoteInfo = Lunch;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CE824F061C22B72800812BFB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CE824F021C22B72700812BFB /* Meals.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CE3395FF1C1B1EC9001C8991 /* Icon-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-16.png"; sourceTree = "<group>"; };
@@ -106,6 +131,11 @@
 		CE3396201C1B1EC9001C8991 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		CE3396211C1B1EC9001C8991 /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
 		CE824EEF1C21BB3800812BFB /* Icon-167px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-167px.png"; path = "../Icon-167px.png"; sourceTree = "<group>"; };
+		CE824EF51C22B72700812BFB /* Meals.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Meals.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE824EF71C22B72700812BFB /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		CE824EFA1C22B72700812BFB /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		CE824EFD1C22B72700812BFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		CE824EFF1C22B72700812BFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEE271091BB03439000F5BD2 /* Lunch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE2710C1BB03439000F5BD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEE2710E1BB03439000F5BD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +152,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CE824EF21C22B72700812BFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE824EF81C22B72700812BFB /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEE271061BB03439000F5BD2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -189,12 +227,32 @@
 			name = Icons;
 			sourceTree = "<group>";
 		};
+		CE824EF61C22B72700812BFB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE824EF71C22B72700812BFB /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE824EF91C22B72700812BFB /* Meals */ = {
+			isa = PBXGroup;
+			children = (
+				CE824EFA1C22B72700812BFB /* TodayViewController.swift */,
+				CE824EFC1C22B72700812BFB /* MainInterface.storyboard */,
+				CE824EFF1C22B72700812BFB /* Info.plist */,
+			);
+			path = Meals;
+			sourceTree = "<group>";
+		};
 		CEE271001BB03439000F5BD2 = {
 			isa = PBXGroup;
 			children = (
 				CEE2710B1BB03439000F5BD2 /* Lunch */,
 				CEE271201BB03439000F5BD2 /* LunchTests */,
 				CEE2712B1BB03439000F5BD2 /* LunchUITests */,
+				CE824EF91C22B72700812BFB /* Meals */,
+				CE824EF61C22B72700812BFB /* Frameworks */,
 				CEE2710A1BB03439000F5BD2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -205,6 +263,7 @@
 				CEE271091BB03439000F5BD2 /* Lunch.app */,
 				CEE2711D1BB03439000F5BD2 /* LunchTests.xctest */,
 				CEE271281BB03439000F5BD2 /* LunchUITests.xctest */,
+				CE824EF51C22B72700812BFB /* Meals.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,6 +303,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CE824EF41C22B72700812BFB /* Meals */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE824F051C22B72800812BFB /* Build configuration list for PBXNativeTarget "Meals" */;
+			buildPhases = (
+				CE824EF11C22B72700812BFB /* Sources */,
+				CE824EF21C22B72700812BFB /* Frameworks */,
+				CE824EF31C22B72700812BFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Meals;
+			productName = Meals;
+			productReference = CE824EF51C22B72700812BFB /* Meals.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		CEE271081BB03439000F5BD2 /* Lunch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEE271311BB03439000F5BD2 /* Build configuration list for PBXNativeTarget "Lunch" */;
@@ -251,10 +327,12 @@
 				CEE271051BB03439000F5BD2 /* Sources */,
 				CEE271061BB03439000F5BD2 /* Frameworks */,
 				CEE271071BB03439000F5BD2 /* Resources */,
+				CE824F061C22B72800812BFB /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CE824F011C22B72700812BFB /* PBXTargetDependency */,
 			);
 			name = Lunch;
 			productName = Lunch;
@@ -303,9 +381,14 @@
 		CEE271011BB03439000F5BD2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Marco Pehla";
 				TargetAttributes = {
+					CE824EF41C22B72700812BFB = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 8NUZ5F7XBK;
+					};
 					CEE271081BB03439000F5BD2 = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 8NUZ5F7XBK;
@@ -336,11 +419,20 @@
 				CEE271081BB03439000F5BD2 /* Lunch */,
 				CEE2711C1BB03439000F5BD2 /* LunchTests */,
 				CEE271271BB03439000F5BD2 /* LunchUITests */,
+				CE824EF41C22B72700812BFB /* Meals */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CE824EF31C22B72700812BFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE824EFE1C22B72700812BFB /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEE271071BB03439000F5BD2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -404,6 +496,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CE824EF11C22B72700812BFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE824EFB1C22B72700812BFB /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEE271051BB03439000F5BD2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -432,6 +532,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CE824F011C22B72700812BFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE824EF41C22B72700812BFB /* Meals */;
+			targetProxy = CE824F001C22B72700812BFB /* PBXContainerItemProxy */;
+		};
 		CEE2711F1BB03439000F5BD2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CEE271081BB03439000F5BD2 /* Lunch */;
@@ -445,6 +550,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CE824EFC1C22B72700812BFB /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE824EFD1C22B72700812BFB /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		CEE271101BB03439000F5BD2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -464,6 +577,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CE824F031C22B72800812BFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Meals/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = canteen.Lunch.Meals;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CE824F041C22B72800812BFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Meals/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = canteen.Lunch.Meals;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		CEE2712F1BB03439000F5BD2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -553,6 +694,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Lunch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = canteen.Lunch;
@@ -567,6 +709,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Lunch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = canteen.Lunch;
@@ -626,6 +769,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CE824F051C22B72800812BFB /* Build configuration list for PBXNativeTarget "Meals" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE824F031C22B72800812BFB /* Debug */,
+				CE824F041C22B72800812BFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		CEE271041BB03439000F5BD2 /* Build configuration list for PBXProject "Lunch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
