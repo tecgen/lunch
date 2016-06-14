@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE2F7EFE1D101D9B00D8E5F4 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F7EFD1D101D9B00D8E5F4 /* DataSource.swift */; };
+		CE2F7F001D10216400D8E5F4 /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F7EFF1D10216400D8E5F4 /* DataSource.swift */; };
 		CE3396221C1B1EC9001C8991 /* Icon-16.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3395FF1C1B1EC9001C8991 /* Icon-16.png */; };
 		CE3396231C1B1EC9001C8991 /* Icon-24.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3396001C1B1EC9001C8991 /* Icon-24.png */; };
 		CE3396241C1B1EC9001C8991 /* Icon-32.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3396011C1B1EC9001C8991 /* Icon-32.png */; };
@@ -95,6 +97,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CE2F7EFD1D101D9B00D8E5F4 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		CE2F7EFF1D10216400D8E5F4 /* DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
 		CE3395FF1C1B1EC9001C8991 /* Icon-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-16.png"; sourceTree = "<group>"; };
 		CE3396001C1B1EC9001C8991 /* Icon-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-24.png"; sourceTree = "<group>"; };
 		CE3396011C1B1EC9001C8991 /* Icon-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-32.png"; sourceTree = "<group>"; };
@@ -241,6 +245,7 @@
 				CE824EFA1C22B72700812BFB /* TodayViewController.swift */,
 				CE824EFC1C22B72700812BFB /* MainInterface.storyboard */,
 				CE824EFF1C22B72700812BFB /* Info.plist */,
+				CE2F7EFD1D101D9B00D8E5F4 /* DataSource.swift */,
 			);
 			path = Meals;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 				CE3395FE1C1B1EB6001C8991 /* Icons */,
 				CEE2710C1BB03439000F5BD2 /* AppDelegate.swift */,
 				CEE2710E1BB03439000F5BD2 /* ViewController.swift */,
+				CE2F7EFF1D10216400D8E5F4 /* DataSource.swift */,
 				CEE271101BB03439000F5BD2 /* Main.storyboard */,
 				CEE271131BB03439000F5BD2 /* Assets.xcassets */,
 				CEE271151BB03439000F5BD2 /* LaunchScreen.storyboard */,
@@ -500,6 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2F7EFE1D101D9B00D8E5F4 /* DataSource.swift in Sources */,
 				CE824EFB1C22B72700812BFB /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEE2710F1BB03439000F5BD2 /* ViewController.swift in Sources */,
+				CE2F7F001D10216400D8E5F4 /* DataSource.swift in Sources */,
 				CEE2710D1BB03439000F5BD2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,6 +595,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = canteen.Lunch.Meals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -601,6 +610,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = canteen.Lunch.Meals;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -776,6 +786,7 @@
 				CE824F041C22B72800812BFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CEE271041BB03439000F5BD2 /* Build configuration list for PBXProject "Lunch" */ = {
 			isa = XCConfigurationList;

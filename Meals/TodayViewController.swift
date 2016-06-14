@@ -13,17 +13,59 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     @IBOutlet var label: UILabel!
     
+    var dataSource = DataSource()
+    var cantenaLocations = [String : [String : [[String:String]]]]()
+    
     func showMealsOfToday() {
-        let CR = "\n"
-        var meals = ""
-        
-        // build the menue
-        meals += "° Schnitzel mit Pommes 🍟" + CR
-        meals += "° Salat mit Tomaten" + CR
-        
-        label.text = meals
+        label.text = getMealsOfToday()
     }
     
+    func getMealsOfToday() -> String {
+        let CR = "\n"
+        let currency = "€"
+        var meals = ""
+        
+        
+        if(cantenaLocations.isEmpty) {
+            cantenaLocations = dataSource.loadData()
+        } else {
+            // TODO check if today's meal is available, otherwise reload data
+            
+            
+        }
+        
+        // build the menue
+        // using the data structure
+        for (location, menue) in cantenaLocations {
+            
+            // order dates
+            var datesOrdered = [String]()
+            for date in menue.keys {
+                datesOrdered.append(date)
+            }
+            datesOrdered.sortInPlace({ (value1: String, value2: String) -> Bool in return value1 < value2 })
+            
+            for date in datesOrdered {
+                let foods = menue[date]
+                
+                for food in foods! {
+                    for (var name, price) in food {
+                        
+                        name = dataSource.cleanUpTheString(name)
+                        name = dataSource.enrichWithEmoji(name)
+                        
+                        
+                        if (date == dataSource.today()) {
+                            meals += "🍽 \(name), \(price) " +  currency + CR
+                        }
+                        
+                    }
+                }
+            }
+        }
+        
+        return meals
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
